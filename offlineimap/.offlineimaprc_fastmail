@@ -1,0 +1,37 @@
+[general]
+accounts = Personal
+ui = basic
+#ui = blinkenlights
+maxsynaccounts = 1
+pythonfile = ~/.offlineimap.py
+
+[mbnames]
+enabled = yes
+filename = ~/.mutt/mailboxes
+header = "mailboxes "
+peritem = "+%(foldername)s"
+sep = " "
+footer = "\n"
+
+[Account Personal]
+localrepository = Local
+remoterepository = Remote
+postsynchook = notmuch new
+# autorefresh = 1
+# quick = 10
+
+[Repository Local]
+
+type = Maildir
+localfolders = ~/.maildir
+sep = .
+restoreatime = no
+
+[Repository Remote]
+type = IMAP
+remotehost = imap.fastmail.com
+remoteuser = andrew@amdavidson.com
+remotepasseval = get_pass()
+maxconnections = 5
+keepalive = 60
+# holdconnectionopen = yes

@@ -1,0 +1,81 @@
+background no
+font Sans:size=8
+#xftfont Sans:size=10
+use_xft yes
+xftalpha 0.8
+update_interval 2.0
+total_run_times 0
+own_window yes
+own_window_type normal
+own_window_argb_visual true
+own_window_transparent yes
+#own_windiw_class conky
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+minimum_size 200 5
+maximum_width 400
+draw_shades yes
+draw_outline no
+draw_borders no
+draw_graph_borders yes
+default_color CDE0E7
+default_shade_color black
+default_outline_color green
+alignment top_right
+gap_y 35
+no_buffers yes
+uppercase no
+cpu_avg_samples 2
+override_utf8_locale no
+uppercase yes # set to yes if you want all text to be in uppercase
+
+TEXT
+${color CDE0E7}${font OxygenSans:pixelsize=70}${time %l:%M %P}${font}
+${hr 1}
+${font OxygenSans:pixelsize=20}${time %A} $alignr${color white}${time %Y}-${color white}${time  %m}-${color white}${time %d}${font}
+
+${color white}SYSTEM ${hr 3}${color}
+
+Hostname: $alignr$nodename
+
+Uptime: $alignr$uptime 
+Kernel: $alignr$kernel
+Load: $alignr$loadavg
+ 
+CPU1 ${alignr}${cpu cpu1}%
+${cpubar 4 cpu1}
+CPU2 ${alignr}${cpu cpu2}%
+${cpubar 4 cpu2}
+Ram ${alignr}$mem / $memmax ($memperc%)
+${membar 4}
+Swap ${alignr} $swap / $swapmax ($swapperc%)
+${swapbar 4}
+
+Highest CPU $alignr CPU% MEM%
+${color aaaaaa}${top name 1}$alignr${top cpu 1}${top mem 1}
+${top name 2}$alignr${top cpu 2}${top mem 2}
+${top name 3}$alignr${top cpu 3}${top mem 3}${color}
+
+Highest MEM $alignr CPU% MEM%
+${color aaaaaa}${top_mem name 1}$alignr${top_mem cpu 1}${top_mem mem 1}
+${top_mem name 2}$alignr${top_mem cpu 2}${top_mem mem 2}
+${top_mem name 3}$alignr${top_mem cpu 3}${top_mem mem 3}${color}
+
+${color white}Filesystem ${hr 3}${color}
+
+Root (/): ${alignr}${fs_used /} / ${fs_size /}
+${fs_bar 4 /}
+
+${color white}NETWORK ${hr 3}${color}
+${if_existing /proc/sys/net/ipv4/conf/eth0}
+eth0: ${addr eth0}${color aaaaaa}
+Down ${downspeed eth0}/s ${alignr}Up ${upspeed eth0}/s
+${downspeedgraph eth0 25,107} ${alignr}${upspeedgraph eth0 25,107}
+Total ${totaldown eth0} ${alignr}Total ${totalup eth0}${color}
+${endif}
+${if_existing /proc/sys/net/ipv4/conf/eth1}
+eth0: ${addr eth1}${color aaaaaa}
+Down ${downspeed eth1} k/s ${alignr}Up ${upspeed eth1} k/s
+${downspeedgraph eth1 25,107} ${alignr}${upspeedgraph eth1 25,107}
+Total ${totaldown eth1} ${alignr}Total ${totalup eth1}${color}
+${endif}

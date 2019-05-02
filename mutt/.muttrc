@@ -1,0 +1,169 @@
+# Paths ---------------------
+set folder = ~/.maildir
+set alias_file = ~/.mutt/alias
+set header_cache = ~/.mutt/cache/headers
+set message_cachedir = ~/.mutt/cache/bodies
+set certificate_file = ~/.mutt/certificates
+set mailcap_path = ~/.mailcap
+set tmpdir = ~/.mutt/temp
+set signature = ~/.sig
+
+# Options -------------------
+set wait_key = no
+set mbox_type = Maildir
+set timeout = 3
+set mail_check = 0
+unset move
+set delete
+unset confirmappend
+set quit
+unset mark_old
+set pipe_decode
+set thorough_search
+
+# Sidebar -------------------
+set sidebar_visible = yes
+set sidebar_width = 20
+set sidebar_short_path = yes
+set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+color sidebar_new color221 color233
+
+# Header Options ------------
+ignore *
+unignore from: reply-to: to: cc: bcc: date: subject: x-Spam-score: list-id:
+unhdr_order *
+hdr_order from: reply-to: to: cc: bcc: date: subject: x-Spam-score: list-id:
+
+# Setup IMAP -------------------
+set my_pass=`~/bin/pw.sh IMAP_PASSWORD`
+set my_user=`~/bin/pw.sh IMAP_USERNAME`
+set folder = "imaps://$my_user:$my_pass@imap.fastmail.com:993"
+set spoolfile= "+INBOX"
+set record = +Sent
+set postponed = +Drafts
+set trash = +Trash
+set imap_check_subscribed = yes
+
+# Setup SMTP -------------------
+set smtp_url=smtp://$my_user:$my_pass@smtp.fastmail.com:587
+set ssl_force_tls=yes
+#set ssl_starttls=yes
+
+
+# Mailboxes -----------------
+# source ~/.mutt/mailboxes
+
+# Index ---------------------
+set date_format = "%m/%d"
+set index_format = "[%Z] %D %-20.20F %s"
+set sort = threads
+set sort_aux = reverse-last-date-received
+set uncollapse_jump
+set sort_re
+set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+
+bind index R group-reply
+bind index <tab> sync-mailbox
+bind index <space> collapse-thread
+
+macro index / "<enter-command>unset wait_key<enter><shell-escape>mutt-notmuch-py<enter><change-folder-readonly>~/.cache/mutt_results<enter>" \
+          "search mail (using notmuch)"
+
+macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
+
+macro index,pager o "<shell-escape>$HOME/bin/fastmail.sh<enter>" "run offlineimap to sync fastmail"
+
+macro index,pager C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
+macro index,pager s "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
+
+bind index D purge-message
+
+bind index,pager <down>   sidebar-next
+bind index,pager <up>     sidebar-prev
+bind index,pager <right>  sidebar-open
+
+
+# Pager View -----------------
+set pager_index_lines = 10 # number of index lines to show
+set pager_context = 3      # number of context lines to show
+set pager_stop             # don't go to next message automatically
+set menu_scroll            # scroll in menus
+set tilde                  # show tildes like in vim
+unset markers              # no ugly plus signs
+
+set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+alternative_order text/plain text/enriched text/html
+
+
+# Pager Bindings -------------
+bind pager k  previous-line
+bind pager j  next-line
+bind pager R  group-reply
+
+# View attachments properly.
+bind attach <return> view-mailcap
+auto_view text/html
+
+macro pager \Cu "|urlview<enter>" "call urlview to open links"
+
+# Setup Identity
+set realname="Andrew Davidson"
+set from="andrew@amdavidson.com"
+
+
+
+# Setup VIM for editing headers
+set edit_headers
+set editor="vim +':set textwidth=0' +':set wrapmargin=0' +':set wrap' +':set linebreak' +':set nolist' +/^$ ++1"
+
+# Contacts shortcuts
+set query_command = "khard email --parsable --search-in-source-files '%s'"
+bind editor <Tab> complete-query
+bind editor ^T    complete
+macro index,pager A "<pipe-message>khard add-email<return>" "add the sender email address to khard"
+
+# Some neat stuff.
+set fcc_attach=yes          # Forward attachments.
+unset reply_self            # Don't include myself when replying to all
+set smart_wrap              # wrap text smartly and don't clip words.
+set forward_format='Fwd: %s' # make the forwarding subject line look more like other clients.
+set forward_decode
+set reply_to
+set reverse_name
+set include
+set forward_quote
+
+# Crypto stuff
+set pgp_decode_command="gpg %?p?--passphrase-fd 0? --no-verbose --batch --output - %f"
+set pgp_verify_command="gpg --no-verbose --batch --output - --verify %s %f"
+set pgp_decrypt_command="gpg --passphrase-fd 0 --no-verbose --batch --output - %f"
+set pgp_sign_command="gpg --no-verbose --batch --output - --passphrase-fd 0 --armor --detach-sign --textmode %?a?-u %a? %f"
+set pgp_clearsign_command="gpg --no-verbose --batch --output - --passphrase-fd 0 --armor --textmode --clearsign %?a?-u %a? %f"
+set pgp_encrypt_only_command="pgpewrap gpg --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust --encrypt-to 0x49CF25C6  -- -r %r -- %f"
+set pgp_encrypt_sign_command="pgpewrap gpg --passphrase-fd 0 --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust --encrypt-to 0x49CF25C6  -- -r %r -- %f"
+set pgp_import_command="gpg --no-verbose --import -v %f"
+set pgp_export_command="gpg --no-verbose --export --armor %r"
+set pgp_verify_key_command="gpg --no-verbose --batch --fingerprint --check-sigs %r"
+set pgp_list_pubring_command="gpg --no-verbose --batch --with-colons --list-keys %r"
+set pgp_list_secring_command="gpg --no-verbose --batch --with-colons --list-secret-keys %r"
+
+# Sign emails as me.
+set pgp_sign_as=0x49CF25C6
+
+# Automatically sign emails.
+#set crypt_autosign
+
+# Reply to signed emails with a signed email.
+set crypt_replysign
+
+# Encrypt and sign replies to signed emails.
+# set crypt_replyencrypt=yes
+
+# Encrypt and sign replies to encrypted emails.
+set crypt_replysignencrypted=yes
+
+# Time out of GPG after xx seconds.
+set pgp_timeout=28800
+
+# Automatically verify signatures.
+set crypt_verify_sig=yes
