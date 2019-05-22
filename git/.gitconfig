@@ -1,6 +1,7 @@
 [user]
 	name = Andrew Davidson
 	email = andrew@amdavidson.com
+	signingkey = 17AF8F2A49CF25C6
 	
 [color]
     ui = auto
@@ -31,3 +32,5 @@
     lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 [push]
 	default = simple
+[commit]
+	gpgsign = true
