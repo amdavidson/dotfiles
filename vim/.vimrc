@@ -102,7 +102,7 @@ endif " has("autocmd")
 
 "==================== colorscheme ====================
 let g:dracula_colorterm = 0
-!silent colorscheme dracula
+silent! colorscheme dracula
 
 
 " ==================== Code Folding ====================
