@@ -33,4 +33,4 @@ function current_pwd {
   echo $(pwd | sed -e "s,^$HOME,~,")
 }
 
-PROMPT='${PR_BOLD_YELLOW}$(truncated_pwd 3)$(git_branch)%{$reset_color%}$(git_unstaged)$(git_is_ahead)$(git_is_behind) %(?.%F{magenta}.%F{red})❯%f '
+PROMPT='%m ${PR_BOLD_YELLOW}$(truncated_pwd 3)$(git_branch)%{$reset_color%}$(git_unstaged)$(git_is_ahead)$(git_is_behind) %(?.%F{magenta}.%F{red})❯%f '
