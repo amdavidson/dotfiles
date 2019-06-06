@@ -18,9 +18,6 @@ HISTFILE=~/.zsh_history
 
 ### Directories
 
-# auto change directories if you type a directory with no cd
-setopt auto_cd
-
 # do not push multiple copies of the same directory onto the directory stack
 setopt pushd_ignore_dups
 
