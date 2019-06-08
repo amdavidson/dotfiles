@@ -13,6 +13,11 @@ else
     source ~/.zsh/hooks.zsh
 fi
 
+# if FZF is installed, source it.
+if [ -e ~/.fzf.zsh ]; then
+    source ~/.fzf.zsh
+fi
+
 if [ -e ~/.zshrc_local ]; then
     source ~/.zshrc_local
 fi
