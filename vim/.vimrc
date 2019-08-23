@@ -129,11 +129,10 @@ nnoremap <leader>h :noh<CR>
 nnoremap <leader>n :bnext<CR>
 nnoremap <leader>p :bprev<CR>
 
+" list buffers and switch
+nnoremap <leader>b :ls<cr>:b<space>
 " Fast saving
 nnoremap <leader>w :w!<cr>
-
-" list buffers
-nnoremap <leader>v :ls<cr>
 
 " Better split switching
 map <C-j> <C-W>j
@@ -151,9 +150,18 @@ map q: :q
 cmap w!! w !sudo tee > /dev/null %
 
 " Go shortcuts just for .go files
-autocmd FileType go nmap <leader>b  <Plug>(go-build)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
+
+" ==================== File searching ====================
+set wildmenu
+set wildmode=list:full
+set wildignorecase
+set path=.,**
+nnoremap <leader>f :find *
+nnoremap <leader>s :sfind *
+nnoremap <leader>v :vert sfind *
+nnoremap <leader>t :tabfind *
 
 
 " ==================== Fugitive ====================
@@ -161,4 +169,6 @@ nnoremap <leader>ga :Git add %:p<CR><CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gp :Gpush<CR>
 vnoremap <leader>gb :Gblame<CR>
+
+
 
