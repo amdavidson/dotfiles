@@ -171,4 +171,8 @@ nnoremap <leader>gp :Gpush<CR>
 vnoremap <leader>gb :Gblame<CR>
 
 
+" =================== nvim ====================
 
+if has('nvim')
+    set inccommand=nosplit
+endif
