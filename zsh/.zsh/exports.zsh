@@ -11,7 +11,7 @@ export LSCOLORS=Gxfxcxdxbxegedabagacad
 export GREP_COLOR='3;33'
 
 # VIM everything
-export EDITOR='vim'
+export EDITOR='nvim'
 
 # Fix gnupg
 export GPG_TTY=$(tty)

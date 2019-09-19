@@ -12,3 +12,7 @@ alias dus='du -sckx * | sort -nr'
 # Refresh when settings have been updated
 alias refresh='source ~/.zshrc'
 
+# use nvim
+alias vim='nvim'
+alias vi='nvim'
+

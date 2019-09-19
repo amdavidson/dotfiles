@@ -21,7 +21,7 @@ sh_white="\[\033[1;37m\]"
 
 # Set some defaults.
 export GOPATH="$HOME/go"
-export EDITOR="vim"
+export EDITOR="nvim"
 export PATH=".:$GOPATH/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:~/bin"
 export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 export DOTFILES_DIR=$HOME'/.dotfiles'
