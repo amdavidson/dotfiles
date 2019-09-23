@@ -1,13 +1,14 @@
 #!/bin/bash
 
-
-
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     echo "OS is linux"
     DISTRO=$(. /etc/os-release; echo $NAME)
     if [[ "$DISTRO" == "Fedora" ]]; then
         echo "Distro is Fedora"
         /usr/bin/offlineimap -k Repository_Remote:sslcacertfile=/etc/ssl/certs/ca-bundle.crt -c $HOME/.offlineimaprc_fastmail
+    elif [[ "$DISTRO" == "Ubuntu" ]]; then
+        echo "Distro is Ubuntu"
+        /usr/bin/offlineimap -k Repository_Remote:sslcacertfile=/etc/ssl/certs/ca-certificates.crt -c $HOME/.offlineimaprc_fastmail
     elif [[ "$DISTRO" == "Debian GNU/Linux" ]]; then
         echo "Distro is Debian"
         /usr/bin/offlineimap -k Repository_Remote:sslcacertfile=/etc/ssl/certs/ca-certificates.crt -c $HOME/.offlineimaprc_fastmail
