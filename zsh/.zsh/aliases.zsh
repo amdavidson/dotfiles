@@ -16,3 +16,18 @@ alias refresh='source ~/.zshrc'
 alias vim='nvim'
 alias vi='nvim'
 
+# blank-chrome
+function blank-chrome {
+    if [ "$@" ]; then
+        URL="$@"
+    else 
+        URL="https://duckduckgo.com"
+    fi
+    TMPDIR=`mktemp -d /tmp/chrome-XXXXX`
+    if [ IS_MAC ]; then
+        /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --user-data-dir=$TMPDIR --no-first-run --no-make-default-browser "$URL"
+    else
+        google-chrome --user-data-dir=$TMPDIR --no-first-run --no-make-default-browser "$URL"
+    fi
+    rm -rf $TMPDIR
+}
