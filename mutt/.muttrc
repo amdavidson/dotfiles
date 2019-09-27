@@ -20,6 +20,8 @@ set quit
 unset mark_old
 set pipe_decode
 set thorough_search
+set charset = utf-8
+set send_charset = utf-8
 
 # Sidebar -------------------
 set sidebar_visible = yes
