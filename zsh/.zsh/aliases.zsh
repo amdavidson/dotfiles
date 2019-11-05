@@ -16,6 +16,9 @@ alias refresh='source ~/.zshrc'
 alias vim='nvim'
 alias vi='nvim'
 
+# fix sudo autocorrections
+alias sudo="nocorrect sudo"
+
 # blank-chrome
 function blank-chrome {
     if [ "$@" ]; then
