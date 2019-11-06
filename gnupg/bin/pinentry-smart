@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -eu
+
+PINENTRY_TUI='/usr/bin/pinentry-curses'
+PINENTRY_GUI='/usr/bin/pinentry-gnome3'
+
+if [ -n "${DISPLAY-}" -a -z "${TERM-}" ]; then
+    exec "$PINENTRY_GUI" "$@"
+else
+    exec "$PINENTRY_TUI" "$@"
+fi
