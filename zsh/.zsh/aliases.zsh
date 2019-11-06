@@ -28,9 +28,9 @@ function blank-chrome {
     fi
     TMPDIR=`mktemp -d /tmp/chrome-XXXXX`
     if [ $IS_MAC ]; then
-        /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --user-data-dir=$TMPDIR --no-first-run --no-make-default-browser "$URL"
+        /Applications/Chromium.app/Contents/MacOS/Chromium --user-data-dir=$TMPDIR --no-first-run --no-make-default-browser "$URL"
     else
-        google-chrome --user-data-dir=$TMPDIR --no-first-run --no-make-default-browser "$URL"
+        chromium-browser --user-data-dir=$TMPDIR --no-first-run --no-make-default-browser "$URL"
     fi
     rm -rf $TMPDIR
 }
