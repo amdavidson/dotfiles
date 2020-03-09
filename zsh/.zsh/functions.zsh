@@ -23,8 +23,14 @@ function truncated_pwd() {
     echo ${(j:/:)dirs}
 }
 
-function collapse_pwd {
-    echo $(pwd | sed -e "s,^$HOME,~,")
+# Show what requires a reboot if one is required
+reboot_for() {
+    if test -f /var/run/reboot-required; then
+        echo "Reboot required for:"
+        cat /var/run/reboot-required.pkgs
+    else
+        echo "Nothing requires a reboot."
+    fi
 }
 
 # Extract anything

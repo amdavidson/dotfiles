@@ -30,7 +30,11 @@ function git_unstaged {
 }
 
 function current_pwd {
-  echo $(pwd | sed -e "s,^$HOME,~,")
+    echo $(pwd | sed -e "s,^$HOME,~,")
 }
 
-PROMPT='%m ${PR_BOLD_YELLOW}$(truncated_pwd 3)$(git_branch)%{$reset_color%}$(git_unstaged)$(git_is_ahead)$(git_is_behind) %(?.%F{magenta}.%F{red})❯%f '
+function check_reboot {
+    test -f /var/run/reboot-required && echo "R "
+}
+
+PROMPT='${PR_BOLD_RED}$(check_reboot)${reset_color}%m ${PR_BOLD_YELLOW}$(truncated_pwd 3)$(git_branch)%{$reset_color%}$(git_unstaged)$(git_is_ahead)$(git_is_behind) %(?.%F{magenta}.%F{red})❯%f '
