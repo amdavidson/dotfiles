@@ -15,3 +15,7 @@ export EDITOR='nvim'
 
 # Fix gnupg
 export GPG_TTY=$(tty)
+
+# Fix GOPATH
+export GOPATH="$HOME/dev/go"
+export PATH="$HOME/dev/go/bin:$PATH"
