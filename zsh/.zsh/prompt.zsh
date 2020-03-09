@@ -29,6 +29,31 @@ function git_unstaged {
     fi
 }
 
+# Truncate working directory
+function truncated_pwd() {
+    n=$1
+    path=`current_pwd`
+
+    dirs=("${(s:/:)path}")
+    dirs_length=$#dirs
+
+    if [[ $dirs_length -ge $n ]]; then
+        ((max=dirs_length - n))
+        for (( i = 1; i <= $max; i++ )); do
+            step="$dirs[$i]"
+            if [[ -z $step ]]; then
+                continue
+            fi
+            if [[ $stem =~ "^\." ]]; then
+                dirs[$i]=$step[0,2]
+            else
+                dirs[$i]=$step[0,1]
+            fi
+        done
+    fi
+    echo ${(j:/:)dirs}
+}
+
 function current_pwd {
     echo $(pwd | sed -e "s,^$HOME,~,")
 }
