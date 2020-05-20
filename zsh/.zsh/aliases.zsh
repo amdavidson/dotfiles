@@ -1,10 +1,10 @@
 # Lazy
 alias ..='cd ..'
-alias lh='ls -d .*' # show hidden files/directories only
-alias lsd='ls -aFhlG'
-alias l='ls -al'
-alias ls='ls -GFh' # Colorize output, add file type indicator, and put sizes in human readable format
-alias ll='ls -GFhl' # Same as above, but in long listing format
+alias lh='ls --color -d .*' # show hidden files/directories only
+alias lsd='ls -aFhlG --color'
+alias l='ls -al --color'
+alias ls='ls -GFh --color' # Colorize output, add file type indicator, and put sizes in human readable format
+alias ll='ls -GFhl --color' # Same as above, but in long listing format
 
 # List directories sorted by size
 alias dus='du -sckx * | sort -nr'
@@ -20,6 +20,12 @@ alias vi='nvim'
 alias mroyal='mosh royal -- tmux new-session -A -s main'
 alias mari='mosh ari -- tmux new-session -A -s main'
 alias muzi='mosh uzi -- tmux new-session -A -s main'
+
+# fix sudo autocorrections
+alias sudo="nocorrect sudo"
+
+# A crude speedtest with curl
+alias speedtest="curl -o /dev/null http://speedtest-nyc1.digitalocean.com/100mb.test"
 
 # blank-chrome
 function blank-chrome {

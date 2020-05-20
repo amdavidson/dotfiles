@@ -1,30 +1,12 @@
-# Truncate working directory
-function truncated_pwd() {
-    n=$1
-    path=`collapse_pwd`
 
-    dirs=("${(s:/:)path}")
-    dirs_length=$#dirs
-
-    if [[ $dirs_length -ge $n ]]; then
-        ((max=dirs_length - n))
-        for (( i = 1; i <= $max; i++ )); do
-            step="$dirs[$i]"
-            if [[ -z $step ]]; then
-                continue
-            fi
-            if [[ $stem =~ "^\." ]]; then
-                dirs[$i]=$step[0,2]
-            else
-                dirs[$i]=$step[0,1]
-            fi
-        done
+# Show what requires a reboot if one is required
+reboot_for() {
+    if test -f /var/run/reboot-required; then
+        echo "Reboot required for:"
+        cat /var/run/reboot-required.pkgs
+    else
+        echo "Nothing requires a reboot."
     fi
-    echo ${(j:/:)dirs}
-}
-
-function collapse_pwd {
-    echo $(pwd | sed -e "s,^$HOME,~,")
 }
 
 # Extract anything

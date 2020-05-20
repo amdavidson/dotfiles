@@ -34,3 +34,5 @@
 	default = simple
 [commit]
 	gpgsign = true
+[gpg]
+	program = /usr/bin/gpg2
