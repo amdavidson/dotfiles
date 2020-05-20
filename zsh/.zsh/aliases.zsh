@@ -1,10 +1,9 @@
 # Lazy
 alias ..='cd ..'
-alias lh='ls --color -d .*' # show hidden files/directories only
-alias lsd='ls -aFhlG --color'
-alias l='ls -al --color'
-alias ls='ls -GFh --color' # Colorize output, add file type indicator, and put sizes in human readable format
-alias ll='ls -GFhl --color' # Same as above, but in long listing format
+alias lh='ls -d .*' # show hidden files/directories only
+alias lsd='ls -aFhlG '
+alias l='ls -al '
+alias ll='ls -GFhl ' # Same as above, but in long listing format
 
 # List directories sorted by size
 alias dus='du -sckx * | sort -nr'
