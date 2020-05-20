@@ -16,6 +16,11 @@ alias refresh='source ~/.zshrc'
 alias vim='nvim'
 alias vi='nvim'
 
+# remote access
+alias mroyal='mosh royal -- tmux new-session -A -s main'
+alias mari='mosh ari -- tmux new-session -A -s main'
+alias muzi='mosh uzi -- tmux new-session -A -s main'
+
 # blank-chrome
 function blank-chrome {
     if [ "$@" ]; then
