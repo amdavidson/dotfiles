@@ -19,6 +19,9 @@ alias vi='nvim'
 # fix sudo autocorrections
 alias sudo="nocorrect sudo"
 
+# shortcut for tmux command
+alias tm="tmux new-session -A -s main"
+
 # A crude speedtest with curl
 alias speedtest="curl -o /dev/null http://speedtest-nyc1.digitalocean.com/100mb.test"
 
