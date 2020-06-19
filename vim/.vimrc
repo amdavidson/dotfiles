@@ -9,7 +9,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " Dracula theme
-Plug 'dracula/vim'
+"Plug 'dracula/vim'
 
 " Sayonara
 Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }
