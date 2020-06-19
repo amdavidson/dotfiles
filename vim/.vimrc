@@ -15,7 +15,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }
 
 " Go support for Vim
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+"Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
 " Smart Line Numbers
 Plug 'myusuf3/numbers.vim'
