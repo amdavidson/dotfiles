@@ -17,6 +17,11 @@ Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }
 " Go support for Vim
 "Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
+" Python Stuff
+Plug 'davidhalter/jedi-vim'
+Plug 'psf/black', { 'branch': 'stable' }
+autocmd BufWritePre *.py execute ':Black'
+
 " Smart Line Numbers
 Plug 'myusuf3/numbers.vim'
 
