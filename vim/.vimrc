@@ -8,8 +8,8 @@ Plug 'bling/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
-" Dracula theme
-"Plug 'dracula/vim'
+" Gruvbox theme
+Plug 'morhetz/gruvbox'
 
 " Sayonara
 Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }
@@ -109,8 +109,10 @@ endif " has("autocmd")
 
 
 "==================== colorscheme ====================
-let g:dracula_colorterm = 0
-silent! colorscheme dracula
+"let g:dracula_colorterm = 0
+"silent! colorscheme dracula
+set background=dark
+colorscheme gruvbox
 
 
 " ==================== Code Folding ====================
