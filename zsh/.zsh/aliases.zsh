@@ -1,9 +1,16 @@
-# Lazy
-alias ..='cd ..'
-alias lh='ls -d .*' # show hidden files/directories only
-alias lsd='ls -aFhlG '
-alias l='ls -al '
-alias ll='ls -GFhl ' # Same as above, but in long listing format
+if [[ "$OSTYPE" == "darwin"* ]]; then 
+    alias ..='cd ..'
+    alias lh='ls -d .*' # show hidden files/directories only
+    alias lsd='ls -aFhlG '
+    alias l='ls -al '
+    alias ll='ls -GFhl ' # Same as above, but in long listing format
+else
+    alias ..='cd ..'
+    alias lh='ls --color=auto -d .*' # show hidden files/directories only
+    alias lsd='ls --color=auto -aFhlG '
+    alias l='ls --color=auto -al '
+    alias ll='ls --color=auto -GFhl ' # Same as above, but in long listing format
+fi
 
 # List directories sorted by size
 alias dus='du -sckx * | sort -nr'
