@@ -11,6 +11,9 @@ Plug 'airblade/vim-gitgutter'
 " Gruvbox theme
 Plug 'morhetz/gruvbox'
 
+" Commenter
+Plug 'scrooloose/nerdcommenter'
+ 
 " Sayonara
 Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }
 
@@ -18,7 +21,29 @@ Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }
 "Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
 " Python Stuff
-Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+" Python source for deoplete
+Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+
+" Vim source for deoplete
+Plug 'Shougo/neco-vim', { 'for': 'vim' }
+
+"{{ Python-related plugins
+" Python completion, goto definition etc.
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+
+" Python syntax highlighting and more
+Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
+
+" Python auto formatting 
 Plug 'psf/black', { 'branch': 'stable' }
 autocmd BufWritePre *.py execute ':Black'
 
@@ -126,8 +151,8 @@ command! CLEAN retab | %s/\s\+$//
 
 " ==================== Keyboard Shortcuts ====================
 " set our leader key to space
-let mapleader = " "
-let g:mapleader = " "
+let mapleader = ","
+let g:mapleader = ","
 
 " quit smartly
 nnoremap <leader>q :Sayonara<cr>
