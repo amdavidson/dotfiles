@@ -12,9 +12,6 @@ else
     alias ll='ls --color=auto -GFhl ' # Same as above, but in long listing format
 fi
 
-# List directories sorted by size
-alias dus='du -sckx * | sort -nr'
-
 # Refresh when settings have been updated
 alias refresh='source ~/.zshrc'
 
