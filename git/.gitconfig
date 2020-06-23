@@ -33,6 +33,6 @@
 [push]
 	default = simple
 [commit]
-	gpgsign = true
+    gpgsign = true
 [gpg]
-	program = /usr/bin/gpg2
+    program = /usr/bin/gpg2
