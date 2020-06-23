@@ -5,7 +5,7 @@ function git_prompt {
     local FULL_BRANCH="$(git symbolic-ref -q HEAD 2>/dev/null || git name-rev --name-only --no-undefined --always HEAD 2>/dev/null)"
     PBRANCH="$(echo $FULL_BRANCH | sed 's/refs\/heads\///')"
     if [ -n $PBRANCH ]; then
-        echo -n " ${PBRANCH}"
+        echo -n " ${PBRANCH} "
         # Are there unstaged changes in the working directory
         local CHANGED=$(git status --porcelain --ignore-submodule -unormal 2>/dev/null | wc -l)
         if [ $CHANGED -gt 0 ]; then
@@ -23,7 +23,7 @@ function git_prompt {
         fi
 
         if [[ -n $PCHANGED || -n $PAHEAD || -n $PBEHIND ]]; then
-            echo -n " ${PCHANGED}${PBEHIND}${PAHEAD} "
+            echo -n "${PCHANGED}${PBEHIND}${PAHEAD} "
         fi
     fi
 }
