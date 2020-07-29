@@ -117,7 +117,7 @@ set from="andrew@amdavidson.com"
 
 # Setup VIM for editing headers
 set edit_headers
-set editor="vim +':set textwidth=0' +':set wrapmargin=0' +':set wrap' +':set linebreak' +':set nolist' +/^$ ++1"
+set editor="nvim +':set textwidth=0' +':set wrapmargin=0' +':set wrap' +':set linebreak' +':set nolist' +/^$ ++1"
 
 # Contacts shortcuts
 set query_command = "khard email --parsable --search-in-source-files '%s'"
