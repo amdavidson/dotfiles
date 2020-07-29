@@ -18,6 +18,7 @@ alias refresh='source ~/.zshrc'
 # use nvim
 alias vim='nvim'
 alias vi='nvim'
+alias nv='nvim'
 
 # remote access
 alias mroyal='mosh royal -- tmux new-session -A -s main'
