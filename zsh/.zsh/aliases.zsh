@@ -24,6 +24,7 @@ alias nv='nvim'
 alias mroyal='mosh royal -- tmux new-session -A -s main'
 alias mari='mosh ari -- tmux new-session -A -s main'
 alias muzi='mosh uzi -- tmux new-session -A -s main'
+alias mnf='mosh amdavidson@needleandfoot.com -- tmux new-session -A -s main'
 
 # fix sudo autocorrections
 alias sudo="nocorrect sudo"

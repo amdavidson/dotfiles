@@ -19,3 +19,6 @@ export GPG_TTY=$(tty)
 # Fix GOPATH
 export GOPATH="$HOME/dev/go"
 export PATH="$HOME/dev/go/bin:$PATH"
+
+# tmux command for use with ssh / mosh commands
+export TM="tmux new-session -A -s main"
