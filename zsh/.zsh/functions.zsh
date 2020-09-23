@@ -34,5 +34,19 @@ extract() {
     fi
 }
 
-
+# blank-chrome
+function blank-chrome {
+    if [ "$@" ]; then
+        URL="$@"
+    else 
+        URL="https://duckduckgo.com"
+    fi
+    TMPDIR=`mktemp -d /tmp/chrome-XXXXX`
+    if [ $IS_MAC ]; then
+        /Applications/Chromium.app/Contents/MacOS/Chromium --user-data-dir=$TMPDIR --no-first-run --no-make-default-browser "$URL"
+    else
+        chromium-browser --user-data-dir=$TMPDIR --no-first-run --no-make-default-browser "$URL"
+    fi
+    rm -rf $TMPDIR
+}
 
