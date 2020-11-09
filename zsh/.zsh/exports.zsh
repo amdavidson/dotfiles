@@ -7,6 +7,10 @@ export TERM=xterm-256color
 export CLICOLOR=1
 export LSCOLORS=Gxfxcxdxbxegedabagacad
 
+# Setup XDG
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+
 # Enable grep colors
 export GREP_COLOR='3;33'
 
