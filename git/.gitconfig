@@ -27,12 +27,21 @@
 [color "diff"]
 	whitespace = red reverse
 [core]
-	whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    pager = delta
 [alias]
     lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 [push]
-	default = simple
+    default = simple
+
+[delta]
+    plus-color = "#012800"
+    minus-color = "#340001"
+    syntax-theme = Monokai Extended
+[interactive]
+    diffFilter = delta --color-only
+
 [commit]
     gpgsign = true
 [gpg]
-	program = /usr/local/bin/gpg 
+    program = /usr/local/bin/gpg 
