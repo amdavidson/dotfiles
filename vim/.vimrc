@@ -137,7 +137,7 @@ endif " has("autocmd")
 "let g:dracula_colorterm = 0
 "silent! colorscheme dracula
 set background=dark
-colorscheme gruvbox
+silent! colorscheme gruvbox
 
 
 " ==================== Code Folding ====================
