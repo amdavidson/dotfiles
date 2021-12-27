@@ -1,6 +1,6 @@
 
 # Set PATH
-export PATH=~/bin:~/.local/bin:/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=~/bin:~/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin:$PATH
 
 # Setup terminal environment
 export TERM=xterm-256color
